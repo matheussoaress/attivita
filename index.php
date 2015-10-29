@@ -43,9 +43,9 @@
         <div id="corp" class="col-md-6">© 2015 Attività &trade; Corporation</div>
         <div id="contact" class="col-md-6"> 
             Redes Sociais: 
-            <img src="img/icon-1.jpg">
-            <img src="img/icon-2.jpg">
-            <img src="img/icon-3.jpg">
+            <a href="#"><img src="img/icon-1.jpg"></a>
+            <a href="#"><img src="img/icon-2.jpg"></a>
+            <a href="#"><img src="img/icon-3.jpg"></a>
         </div>
     </footer>
 </body>
@@ -59,33 +59,36 @@
                 <h4 class="modal-title" id="modal-title">Novo usuário</h4>
             </div>
             <div class="modal-body">
-                <form id="novo">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <label for="nome">Nome: <span class="obrig">*</span></label>
-                            <input id="nome" name="nome" type="text" class="form-control" placeholder="Seu nome completo">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="nascimento">Data de Nascimento:</label>
-                            <input id="nascimento" name="nascimento" type="text" class="form-control" placeholder="Sua data de nascimento">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="email">E-mail: <span class="obrig">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-addon">@</div>
-                                <input id="email" name="email" type="text" class="form-control" placeholder="E-mail que você mais utiliza">
+                <div class="row">
+                    <form id="novo">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="nome">Nome: <span class="obrig">*</span></label>
+                                <input id="nome" name="nome" type="text" class="form-control" placeholder="Seu nome completo">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nascimento">Data de Nascimento:</label>
+                                <input id="nascimento" name="nascimento" type="text" class="form-control" placeholder="Sua data de nascimento">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">E-mail: <span class="obrig">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">@</div>
+                                    <input id="email" name="email" type="text" class="form-control" placeholder="E-mail que você mais utiliza">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="senha">Confirme sua senha: <span class="obrig">*</span></label>
+                                <input id="senha" name="senha" type="password" class="form-control" placeholder="Escolha uma senha segura">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nova_senha">Senha: <span class="obrig">*</span></label>
+                                <input id="nova_senha" name="nova_senha" type="password" class="form-control" placeholder="Digite a mesma senha">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="senha">Confirme sua senha: <span class="obrig">*</span></label>
-                            <input id="senha" name="senha" type="password" class="form-control" placeholder="Escolha uma senha segura">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="nova_senha">Senha: <span class="obrig">*</span></label>
-                            <input id="nova_senha" name="nova_senha" type="password" class="form-control" placeholder="Digite a mesma senha">
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                    
+                </div>
             </div>
             <div class="modal-footer">
                 <div id="bottons">

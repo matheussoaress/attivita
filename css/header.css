@@ -1,0 +1,18 @@
+.header{
+	/*margin-top: 15px;*/
+	margin-top: 10px;
+}
+.navbar-brand {
+    padding: 0px !important;
+}
+.container-fluid {
+   background-color: rgba(139, 167, 163, 0.43) !important;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    background-color: #5EAEA4 !important;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #5EAEA4 !important;
+}

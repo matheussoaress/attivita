@@ -53,10 +53,6 @@ div.modal-header{
     background-color: rgb(46, 113, 105) !important;
     border-color: rgb(46, 113, 105) !important;
 }
-button{
-    margin-top: 10px;
-}
-
 .obrig{
     color:red;
 }
