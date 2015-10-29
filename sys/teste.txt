@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    var x = [
+{
+  "data": [
     [
       "Tiger Nixon",
       "System Architect",
@@ -342,11 +342,5 @@ $(document).ready(function () {
       "New York",
       "4226"
     ]
-  ];
-    $("#tarefas").dataTable({
-        // "lengthMenu": [ 10, 25, 50, 75, 100 ],
-        // "pageLength": 50,
-        // "lengthChange": false,
-        "data": x
-    });
-});
+  ]
+}

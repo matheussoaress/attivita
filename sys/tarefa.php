@@ -92,19 +92,6 @@
                                         <th class="actions">Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                <?php foreach ($tarefas as $tarefa): ?>
-                                    <tr id="<?php echo $tarefa['id'] ?>">
-                                        <td style="cursor: pointer"><?php echo $tarefa['codigo'] ?>&nbsp;</td>
-                                        <td><?php echo $tarefa['Setor'] ?>&nbsp;</td>
-                                        <td><?php echo $tarefa['andar'] ?>&nbsp;</td>
-                                        <td class="actions">
-                                            <button data-target="#modalAlterar" data-toggle="modal" class="btn btn-primary btn-xs" data-id="<?= $tarefa['Card']['id']?>" ><i class="fa fa-pencil"></i></button>
-                                            <button data-target="#modalExcluir" data-toggle="modal" class="btn btn-danger btn-xs" data-id="<?= $tarefa['Card']['id']?>" ><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
                             </table>
                         </div>
                     </div><!-- ./panel-default -->
