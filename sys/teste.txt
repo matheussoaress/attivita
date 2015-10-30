@@ -1,5 +1,5 @@
-$(document).ready(function () {
-	var xxx = [
+{
+  "data": [
     [
       "Tiger Nixon",
       "System Architect",
@@ -342,18 +342,5 @@ $(document).ready(function () {
       "New York",
       "4226"
     ]
-  ];
-	$("#tarefas").dataTable({
-		"data": xxx
-	});
-	
-	$("#agendar").datepicker({
-		altField: "#actualDate",
-		'format' : 'dd/mm/yy',
-		'autoclose' : true,
-		'language': 'pt-BR'
-	});
-
-
-
-});
+  ]
+}

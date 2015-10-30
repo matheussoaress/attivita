@@ -6,14 +6,16 @@
     <title>Tarefa - Attivita</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/header.css">
-    <link rel="stylesheet" type="text/css" href="../css/content.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/datepicker/datepicker3.css">
     <link rel="stylesheet" type="text/css" href="../vendor/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../vendor/datatables/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/content.css">
     <script type="text/javascript" src="../vendor/jquery/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../vendor/datatables/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendor/datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="../js/tarefa.js"></script>
 </head>
 <body>
@@ -77,7 +79,7 @@
                                 <span>Mensagem</span>
                             </div>
                             <div class="pull-right">
-                                <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#modalInserir"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#inserir"><span class="glyphicon glyphicon-plus-sign"></span></button>
                                 <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#modalBuscar"><span class="glyphicon glyphicon-search"></span></button>
                             </div>
                             <div class="clearfix"></div>
@@ -92,19 +94,6 @@
                                         <th class="actions">Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                <?php foreach ($tarefas as $tarefa): ?>
-                                    <tr id="<?php echo $tarefa['id'] ?>">
-                                        <td style="cursor: pointer"><?php echo $tarefa['codigo'] ?>&nbsp;</td>
-                                        <td><?php echo $tarefa['Setor'] ?>&nbsp;</td>
-                                        <td><?php echo $tarefa['andar'] ?>&nbsp;</td>
-                                        <td class="actions">
-                                            <button data-target="#modalAlterar" data-toggle="modal" class="btn btn-primary btn-xs" data-id="<?= $tarefa['Card']['id']?>" ><i class="fa fa-pencil"></i></button>
-                                            <button data-target="#modalExcluir" data-toggle="modal" class="btn btn-danger btn-xs" data-id="<?= $tarefa['Card']['id']?>" ><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
                             </table>
                         </div>
                     </div><!-- ./panel-default -->
@@ -126,3 +115,80 @@
 
 </body>
 </html>
+
+
+<!-- Modal inserir tarefa -->
+
+<div class="modal fade" id="inserir" tabindex="-1" role="dialog" aria-labelledby="inserirLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="inserirLabel">Nova Tarefa</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form>
+                        <div class="form-group">
+                            <div class="col-md-12"> 
+                                <label for="titulo"> Título: </label>
+                                <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Digite o título da tarefa" maxlength="100">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="duracao"> Duração: </label>
+                                <input type="text" id="duracao" name="duracao" class="number form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="agendar"> Agendar para: </label>
+                                <input type="text" id="agendar" name="agendar" class="number form-control">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="prioridade"> Prioridade: </label> <br>
+                                <div class="btn-group " data-toggle="buttons" >
+                                    <label class="btn btn-default button-radio "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 1
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 2
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 3
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 4
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 5
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 6
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 7
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 8
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 9
+                                    </label>
+                                    <label class="btn btn-default "> 
+                                         <input type="radio" name="prioridade" id="prioridade" autocomplete="off" checked> 10
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="tarefa"> Tarefa: </label>
+                                <textarea id="tarefa" name="tarefa" rows="3" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary button-color">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>
