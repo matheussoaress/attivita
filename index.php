@@ -1,3 +1,4 @@
+<?php require_once 'autoload.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
