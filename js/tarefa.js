@@ -347,6 +347,13 @@ $(document).ready(function () {
         // "lengthMenu": [ 10, 25, 50, 75, 100 ],
         // "pageLength": 50,
         // "lengthChange": false,
-        "data": x
+        "data": x,
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
     });
 });

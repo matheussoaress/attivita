@@ -4,17 +4,28 @@
 <html>
 <head>
     <title>Tarefa - Attivita</title>
+    
     <link rel="shortcut icon" href="../img/favicon.ico">
+    
     <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/content.css">
     <link rel="stylesheet" type="text/css" href="../vendor/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../vendor/datatables/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/datatables/extensions/Buttons/css/buttons.dataTables.css">
+
+    <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    
     <script type="text/javascript" src="../vendor/jquery/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../vendor/datatables/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../vendor/datatables/extensions/Buttons/js/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="../vendor/datatables/extensions/Buttons/js/buttons.html5.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/tarefa.js"></script>
+
 </head>
 <body>
 
