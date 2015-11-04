@@ -1,5 +1,9 @@
 $(document).ready(function () {
+<<<<<<< HEAD
     var x = [
+=======
+	var xxx = [
+>>>>>>> 0d007fdc16ac441ec51127002c8e39bb0ca5776c
     [
       "Tiger Nixon",
       "System Architect",
@@ -343,10 +347,14 @@ $(document).ready(function () {
       "4226"
     ]
   ];
-    $("#tarefas").dataTable({
-        // "lengthMenu": [ 10, 25, 50, 75, 100 ],
-        // "pageLength": 50,
-        // "lengthChange": false,
-        "data": x
-    });
+	$("#tarefas").dataTable({
+		"data": xxx
+	});
+	
+	$("#agendar").datepicker({
+		altField: "#actualDate",
+		'format' : 'dd/mm/yy',
+		'autoclose' : true,
+		'language': 'pt-BR'
+	});
 });
