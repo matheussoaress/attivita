@@ -1,9 +1,5 @@
 $(document).ready(function () {
-<<<<<<< HEAD
-    var x = [
-=======
 	var xxx = [
->>>>>>> 0d007fdc16ac441ec51127002c8e39bb0ca5776c
     [
       "Tiger Nixon",
       "System Architect",

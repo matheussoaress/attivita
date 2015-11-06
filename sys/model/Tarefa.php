@@ -1,8 +1,8 @@
 <?php
  
-namespace sys\Model;
+namespace sys\model;
 
-use sys\Model\Object;
+use sys\model\Object;
 
 class Tarefa extends Object
 {
@@ -127,7 +127,7 @@ class Tarefa extends Object
         $consul = $this->prepare( $sql);
         $consul->execute($params);
         if($class){
-            $result = $consul->fetchAll(PDO::FETCH_CLASS, get_class());
+            $result = $consul->fetchAll( \PDO::FETCH_CLASS, get_class());
         }else{
             $result = $consul->fetchAll();
         }

@@ -20,6 +20,10 @@
         <div id="body" class="centro">
             <div id='login' class="centro">
                 <h3>Login</h3>
+                <span class="alert-info text-alert " style="display: none;" id="conteudo-mensagem">
+                    <i class="fa fa-info"></i>
+                    <span>Mensagem</span>
+                </span>
                 <form id="login">
                     <div class="form-group">
                         <div class="col-md-12">
