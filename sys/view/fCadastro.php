@@ -1,8 +1,7 @@
 <?php
+namespace sys\view;
 
 include_once "../../autoload.php";
-
-namespace sys\view;
 
 use sys\controller\UsuarioController;
 

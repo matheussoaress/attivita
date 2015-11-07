@@ -68,20 +68,14 @@
         {
             $find = new self();
             $find->beginTransaction();
-            $consul = $find->prepare( "SELECT * FROM usuarios WHERE email = 'matheushsoaress@gmail.com' and senha = '202cb962ac59075b964b07152d234b70'");
-//            $consul = $find->prepare( "SELECT * FROM usuarios WHERE ".$where);
-//            $consul->execute( $params);
-            $consul->execute( );
-//            print_r($consul);
-//            var_dump($where);
-//            var_dump($params);
+            $consul = $find->prepare( "SELECT * FROM usuarios WHERE ".$where);
+            $consul->execute( $params);
             if($class){
                 $result = $consul->fetchAll( \PDO::FETCH_CLASS, get_class());
             }else{
                 $result = $consul->fetchAll();
             }
-            var_dump($result);
-            return $result?$result:false;
+            return $result?$result[0]:false;
         }
         
         public function delete() 
@@ -95,7 +89,7 @@
 
         public function save() 
         {
-            if(isset($this->id)){
+            if(!is_null($this->id)){
                 $params = array(
                     'p_email' => $this->email, 
                     'p_nascimento' => $this->nascimento,
@@ -113,7 +107,7 @@
                     'p_nome' => $this->nome,
                     'p_senha' => $this->senha
                 );
-                $new = $this->prepare( 'INSERT INTO usuario( nome, nascimento, email, senha) VALUES (:p_nome, :p_nascimento, :p_email, :p_senha)');
+                $new = $this->prepare( 'INSERT INTO usuarios( nome, nascimento, email, senha) VALUES (:p_nome, :p_nascimento, :p_email, :p_senha)');
                 $result = $new->execute( $params);
                 return $result?true:false;
             }

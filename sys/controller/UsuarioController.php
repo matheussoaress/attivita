@@ -3,6 +3,7 @@
 namespace sys\controller;
 
 use sys\model\Usuario;
+use sys\controller\Util;
 
 class UsuarioController
 {
@@ -10,10 +11,9 @@ class UsuarioController
     {
         $params = array(
             'p_email' => $nome,
-            'p_senha' => md5($senha)
+            'p_senha' => $senha //md5($senha)
         );
-        $user = Usuario::find('email = \':p_email\' and senha = \':p_senha\'', $params);
-        return $user;
+        $user = Usuario::find('email = :p_email and senha = :p_senha', $params);
         if($user instanceof Usuario){
             $_SESSION['usuario']= $user;
             return true;
@@ -31,7 +31,7 @@ class UsuarioController
     {
         $usuario = new Usuario;
         $usuario->setNome($nome);
-        $usuario->setNascimento($nascimento);
+        $usuario->setNascimento(Util::tratarDataParaBanco($nascimento));
         $usuario->setEmail($email);
         $usuario->setSenha($senha);
         if($usuario->save()){

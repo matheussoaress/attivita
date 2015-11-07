@@ -26,18 +26,38 @@ $(document).ready(function(){
 
     $("#nascimento").datepicker({
         altField: "#actualDate",
-        'format' : 'dd/mm/yy',
+        'format' : 'dd/mm/yyyy',
         'autoclose' : true,
         'language': 'pt-BR'
     });
 
-    $("form#login").on('click', function(){
+    $("#entrar").on('click', function(){
         var data = $("form#login").serializeArray();
         $.ajax({
             async: false,
             url: 'sys/view/fLogin.php',
             method:'post',
             dataType:'json',
+            data: data,
+            success: function ( retorno){
+                if( retorno.result == 1){
+                    retornoSucesso("Entrou");
+                }else{
+                    retornoErro("Usuário ou senha incorretos ou inexistêntes");
+                }
+            },
+            error: function ( retorno){
+                console.log(retorno);
+            }
+        });
+    });
+    $("#cadastrar").on('click', function (){
+        var data = $("form#novo").serializeArray();
+        $.ajax({
+            async: false,
+            url: 'sys/view/fCadastro.php',
+            method:'post',
+            dataType:'html',
             data: data,
             success: function ( retorno){
                 if( retorno.result == 1){
