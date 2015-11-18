@@ -10,7 +10,7 @@ $(document).ready(function(){
         $('#conteudo-mensagem').removeClass("hidden");
         $('#conteudo-mensagem').removeClass("alert-danger").addClass("alert-info");
         setTimeout(function(){
-            $('#conteudo-mensagem').show(500);
+            $('#conteudo-mensagem').hide(500);
         },4000);
     };
     
@@ -41,7 +41,7 @@ $(document).ready(function(){
             data: data,
             success: function ( retorno){
                 if( retorno.result == 1){
-                    retornoSucesso("Entrou");
+                    window.location.assign('http://localhost/attivita/sys/tarefa.php');
                 }else{
                     retornoErro("Usuário ou senha incorretos ou inexistêntes");
                 }
@@ -61,9 +61,9 @@ $(document).ready(function(){
             data: data,
             success: function ( retorno){
                 if( retorno.result == 1){
-                    retornoSucesso("Entrou");
+                    retornoSucesso("Sucesso ao cadastrar o usuário.")
                 }else{
-                    retornoErro("Usuário ou senha incorretos ou inexistêntes");
+                    retornoErro("Impossivel cadastrar usuário no momento.");
                 }
             },
             error: function ( retorno){

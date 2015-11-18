@@ -1,4 +1,12 @@
-<?php $tarefas = array();?>
+<?php 
+    include_once '../autoload.php';
+    if(!\sys\controller\UsuarioController::testarLogin()){
+        header('Location: /attivita');
+    }else{
+        die("teste");
+        echo "logado";
+    }
+?>
 
 <!DOCTYPE html>
 <html>
