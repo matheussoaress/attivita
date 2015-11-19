@@ -4,8 +4,8 @@ include_once '../autoload.php';
 namespace sys;
 
 use vendor\nusoap\lib\nusoap;
-use sys\Model\Usuario;
-use sys\Model\Tarefa;
+use sys\model\Usuario;
+use sys\model\Tarefa;
 
 
 function getUsuarios()
@@ -50,7 +50,7 @@ function getTarefas()
 }
 
 
-$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : ”;
+$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
 $server = new soap_server;
 $server->configureWSDL('addressbook1', 'urn:'.$_SERVER['SCRIPT_URI']);
 

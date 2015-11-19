@@ -56,3 +56,20 @@ div.modal-header{
 .obrig{
     color:red;
 }
+.text-alert{
+    position: absolute;
+    left: 100px;
+    top: 30px;
+    z-index: 1;
+    padding: 5px;
+}
+label.error{
+    display: none !important;
+}
+.error{
+    border-color: rgb(204, 63, 63);;
+    color: rgb(204, 63, 63);;
+}
+.valid{
+    border-color: rgb(92, 173, 93);
+}

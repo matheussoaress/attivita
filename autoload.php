@@ -1,6 +1,9 @@
 <?php
 function __autoload($className)
 {
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
     // var_dump($className);exit;
     $className = ltrim($className, '\\');
     $fileName  = '';
