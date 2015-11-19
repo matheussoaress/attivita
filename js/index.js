@@ -1,8 +1,42 @@
-function validaEntrada (form) {
-	
-}
-
 $(document).ready(function(){
+
+    $.validator.messages.required = '';
+    $("form#novo").validate({
+        onfocusout: true,
+        onkeyup: true,
+        rules:{
+            nome:{
+                required: true
+            },
+            email:{
+                required: true
+            },
+            senha:{
+                required: true
+            },
+            nova_senha:{
+                required: true,
+                equalTo: "#senha"
+            }
+        },
+        // messages:{
+        //     nome:{
+        //         required: false
+        //     },
+        //     email:{
+        //         required: false
+        //     },
+        //     senha:{
+        //         required: false
+        //     },
+        //     nova_senha:{
+        //         required: false,
+        //         equalTo: "Senhas são diferentes"
+        //     }
+        // }
+    });
+    $("#nascimento").mask('00/00/0000');
+
     var retornoSucesso = function(mensagem) {
         //$('.alert').remove();
         $('#conteudo-mensagem span').html(mensagem);
@@ -52,23 +86,32 @@ $(document).ready(function(){
         });
     });
     $("#cadastrar").on('click', function (){
-        var data = $("form#novo").serializeArray();
-        $.ajax({
-            async: false,
-            url: 'sys/view/fCadastro.php',
-            method:'post',
-            dataType:'html',
-            data: data,
-            success: function ( retorno){
-                if( retorno.result == 1){
-                    retornoSucesso("Sucesso ao cadastrar o usuário.")
-                }else{
-                    retornoErro("Impossivel cadastrar usuário no momento.");
+        if ($("form#novo").valid()) {
+            var data = $("form#novo").serializeArray();
+            $.ajax({
+                async: false,
+                url: 'sys/view/fCadastro.php',
+                method:'post',
+                dataType:'json',
+                data: data,
+                success: function ( retorno){
+                    if( retorno.result == 1){
+                        $("#novo").modal('hide');
+                        $("#nome").val('');
+                        $("#nascimento").val('');
+                        $("#email").val('');
+                        $("#senha").val('');
+                        $("#nova_senha").val('');
+                        retornoSucesso("Sucesso ao cadastrar o usuário.")
+                    }else{
+                        $("#novo").modal('hide');
+                        retornoErro("Impossivel cadastrar usuário no momento.");
+                    }
+                },
+                error: function ( retorno){
+                    console.log(retorno);
                 }
-            },
-            error: function ( retorno){
-                console.log(retorno);
-            }
-        });
+            });
+        };
     });
 });

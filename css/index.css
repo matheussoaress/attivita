@@ -63,3 +63,13 @@ div.modal-header{
     z-index: 1;
     padding: 5px;
 }
+label.error{
+    display: none !important;
+}
+.error{
+    border-color: rgb(204, 63, 63);;
+    color: rgb(204, 63, 63);;
+}
+.valid{
+    border-color: rgb(92, 173, 93);
+}
