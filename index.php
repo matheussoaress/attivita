@@ -85,12 +85,12 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="senha">Confirme sua senha: <span class="obrig">*</span></label>
-                                <input id="senha" name="senha" type="password" minlength="6" maxlength="50" class="form-control" placeholder="Escolha uma senha segura">
-                            </div>
-                            <div class="col-md-6">
                                 <label for="nova_senha">Senha: <span class="obrig">*</span></label>
                                 <input id="nova_senha" name="nova_senha" type="password"  minlength="6" maxlength="50" class="form-control" placeholder="Digite a mesma senha">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="senha">Confirme sua senha: <span class="obrig">*</span></label>
+                                <input id="senha" name="senha" type="password" minlength="6" maxlength="50" class="form-control" placeholder="Escolha uma senha segura">
                             </div>
                         </div>
                     </form>

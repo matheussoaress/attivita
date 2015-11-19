@@ -10,6 +10,7 @@
         protected $email;
         protected $nascimento;
         protected $senha;
+        protected $pontuacao;
 
         public function getId()
         {
@@ -54,6 +55,15 @@
         public function setSenha( $senha)
         { 
             $this->senha = $senha;
+        }
+
+        public function getPontuacao()
+        {
+            return $this->pontuacao;
+        }
+        public function setPontuacao( $pontuacao)
+        {
+            $this->pontuacao = $pontuacao;
         }
         
         /**

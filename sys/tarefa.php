@@ -2,9 +2,6 @@
     include_once '../autoload.php';
     if(!\sys\controller\UsuarioController::testarLogin()){
         header('Location: /attivita');
-    }else{
-        die("teste");
-        echo "logado";
     }
 ?>
 
@@ -62,7 +59,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nome do Usuário <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['usuario']['nome'] ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Meu perfil</a></li>
                                 <li role="separator" class="divider"></li>

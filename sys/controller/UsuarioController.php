@@ -15,7 +15,14 @@ class UsuarioController
         );
         $user = Usuario::find('email = :p_email and senha = :p_senha', $params);
         if($user instanceof Usuario){
-            $_SESSION['usuario']= $user;
+            $info = array(
+                'id' => $user->getId(),
+                'nome' => $user->getNome(),
+                'email' => $user->getEmail(),
+                'nascimento' => $user->getNascimento(),
+                'pontuacao' => $user->getPontuacao(),
+            );
+            $_SESSION['usuario']= $info;
             return true;
         }else{
             return false;
@@ -24,7 +31,7 @@ class UsuarioController
 
     public static function testarLogin()
     {
-        return (isset($_SESSION['usuario']) && ($_SESSION['usuario'] instanceof Usuario));
+        return (isset($_SESSION['usuario']) && is_array($_SESSION['usuario']));
     }
 
     public function criarUsuario($nome, $nascimento, $email, $senha)
