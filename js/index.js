@@ -15,8 +15,7 @@ $(document).ready(function(){
                 required: true
             },
             nova_senha:{
-                required: true,
-                equalTo: "#senha"
+                required: true
             }
         },
         // messages:{
@@ -102,6 +101,7 @@ $(document).ready(function(){
                         $("#email").val('');
                         $("#senha").val('');
                         $("#nova_senha").val('');
+                        $("#novo").modal('hide');
                         retornoSucesso("Sucesso ao cadastrar o usuário.")
                     }else{
                         $("#novo").modal('hide');
