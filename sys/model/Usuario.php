@@ -85,7 +85,7 @@
             }else{
                 $result = $consul->fetchAll();
             }
-            return $result?$result[0]:false;
+            return $result?$result:false;
         }
         
         public function delete() 

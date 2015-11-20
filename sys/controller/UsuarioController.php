@@ -14,13 +14,13 @@ class UsuarioController
             'p_senha' => $senha //md5($senha)
         );
         $user = Usuario::find('email = :p_email and senha = :p_senha', $params);
-        if($user instanceof Usuario){
+        if((isset($user[0])) and ($user[0] instanceof Usuario)){
             $info = array(
-                'id' => $user->getId(),
-                'nome' => $user->getNome(),
-                'email' => $user->getEmail(),
-                'nascimento' => $user->getNascimento(),
-                'pontuacao' => $user->getPontuacao(),
+                'id' => $user[0]->getId(),
+                'nome' => $user[0]->getNome(),
+                'email' => $user[0]->getEmail(),
+                'nascimento' => $user[0]->getNascimento(),
+                'pontuacao' => $user[0]->getPontuacao(),
             );
             $_SESSION['usuario']= $info;
             return true;
@@ -42,7 +42,6 @@ class UsuarioController
         $usuario->setEmail($email);
         $usuario->setSenha($senha);
         if($usuario->save()){
-             $_SESSION['usuario']= $usuario;
              return true;
         }else{
             return false;
@@ -58,7 +57,14 @@ class UsuarioController
         }
     }
     
-    public function teste(){
-        return "teste";
+    public function listarUsuarios(){
+        $users = Usuario::find();
+        foreach ($users as $user) {
+            $info[] = array(
+                'id' => $user->getId(),
+                'nome' => $user->getNome(),
+            );    
+        }
+        return json_encode($info);
     }
 }
