@@ -118,7 +118,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <form>
+                    <form id="cadastra">
                         <div class="form-group">
                             <div class="col-md-12"> 
                                 <label for="titulo"> Título: </label>
@@ -177,8 +177,64 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary button-color">Cadastrar</button>
+                <button type="button" id='cadastrar' class="btn btn-primary button-color">Cadastrar</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DELEGAR -->
+
+<div class="modal fade " id="modalDelegar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalDelegarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modalDelegarLabel">Delagar tarefa:</h4>
+            </div>
+            <div class="modal-body">
+                <form id='delega'>
+                    <div id="form-group">
+                        <input type="hidden" value="0" name='id' id='id'>
+                        <div id="col-md-12">
+                            <label for="usuario"> Usuário:</label>
+                            <select id='usuario' name='usuario' class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id='delegar' class="btn btn-primary button-color">Delegar</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ALTERAR STATUS -->
+
+<div class="modal fade " id="modalStatus" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalStatusLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modalStatusLabel">Delagar tarefa:</h4>
+            </div>
+            <div class="modal-body">
+                <form id='altera'>
+                    <div id="form-group">
+                        <input type="hidden" value="0" name='id' id='id'>
+                        <div id="col-md-12">
+                            <label for="status"> Novo status:</label>
+                            <select id='status' name='status' class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="alterar" class="btn btn-primary button-color">Alterar</button>
         </div>
     </div>
 </div>
