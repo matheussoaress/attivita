@@ -133,7 +133,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <form>
+                    <form id="cadastra">
                         <div class="form-group">
                             <div class="col-md-12"> 
                                 <label for="titulo"> Título: </label>
@@ -192,7 +192,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary button-color">Cadastrar</button>
+                <button type="button" id='cadastrar' class="btn btn-primary button-color">Cadastrar</button>
             </div>
         </div>
     </div>
@@ -208,7 +208,7 @@
                 <h4 class="modal-title" id="modalDelegarLabel">Delagar tarefa:</h4>
             </div>
             <div class="modal-body">
-                <form id='delegar'>
+                <form id='delega'>
                     <div id="form-group">
                         <input type="hidden" value="0" name='id' id='id'>
                         <div id="col-md-12">
@@ -221,7 +221,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary button-color">Delegar</button>
+                <button type="button" id='delegar' class="btn btn-primary button-color">Delegar</button>
         </div>
     </div>
 </div>
@@ -236,7 +236,7 @@
                 <h4 class="modal-title" id="modalStatusLabel">Delagar tarefa:</h4>
             </div>
             <div class="modal-body">
-                <form id='status'>
+                <form id='altera'>
                     <div id="form-group">
                         <input type="hidden" value="0" name='id' id='id'>
                         <div id="col-md-12">
@@ -249,7 +249,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary button-color">Alterar</button>
+                <button type="button" id="alterar" class="btn btn-primary button-color">Alterar</button>
         </div>
     </div>
 </div>

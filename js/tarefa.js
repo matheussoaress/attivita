@@ -353,4 +353,15 @@ $(document).ready(function () {
 		'autoclose' : true,
 		'language': 'pt-BR'
 	});
+
+
+    $("cadastrar").on('click', function(){
+        var data = $("#cadastra").serializeArray();
+    });
+    $("delegar").on('click', function(){
+        var data = $("#delega").serializeArray();
+    });
+    $("alterar").on('click', function(){
+        var data = $("#altera").serializeArray();
+    });
 });
