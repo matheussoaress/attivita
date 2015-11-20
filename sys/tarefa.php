@@ -12,13 +12,9 @@
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../vendor/datepicker/datepicker3.css">
-    <link rel="stylesheet" type="text/css" href="../vendor/datatables/dataTables.bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../vendor/datatables/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/content.css">
     <script type="text/javascript" src="../vendor/jquery/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../vendor/datatables/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../vendor/datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="../js/tarefa.js"></script>
@@ -89,18 +85,7 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-striped dataTable" id="tarefas" cellpadding="0" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Tarefa</th>
-                                        <th>Responsável</th>
-                                        <th>Tempo limite</th>
-                                        <th class="actions">Ações</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                        <div id='lista' class="panel-body"></div>
                     </div><!-- ./panel-default -->
                 </div><!-- ./box-info -->
             </div><!-- ./col-xs-12 -->
