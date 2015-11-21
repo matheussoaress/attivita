@@ -10,16 +10,25 @@ class TarefaController
 {
     public static function cadastrarTarefa( $dados)
     {
+        $user = $_SESSION['usuario']['id'];
+        $dataCriacao = new \DateTime();
+        
+        if($dados['agendar']){
+            $dataAgend = \DateTime::createFromFormat('d/m/Y', $dados['agendar']);
+        }else{
+            $dataAgend = $dataCriacao;
+        }
+
         $tarefa = new Tarefa();
-        $tarefa->setCriador_id($dados['criador_id']);
-        $tarefa->setExecutor_id($dados['executor_id']);
-        $tarefa->setNome($dados['nome']);
-        $tarefa->setImportancia($dados['importancia']);
-        $tarefa->setData_criacao($dados['data_criacao']);
-        $tarefa->setData_inicio($dados['data_inicio']);
-        $tarefa->setData_limite($dados['data_limite']);
-        $tarefa->setDescricao($dados['descricao']);
-        $tarefa->setConcluido($dados['concluido']);
+        $tarefa->setNome($dados['titulo']);
+        $tarefa->setImportancia($dados['prioridade']);
+        $tarefa->setDescricao($dados['tarefa']);
+        $tarefa->setDataInicio($dataAgend->format('Y-m-d'));
+        $tarefa->setDataCriacao($dataCriacao->format('Y-m-d'));
+        $tarefa->setDuracao($dados['duracao']);
+        $tarefa->setCriadorId($user);
+        $tarefa->setExecutorId($user);
+
         if($tarefa->save()){
             return true;
         }else{
@@ -27,11 +36,20 @@ class TarefaController
         }
     }
 
-    public static function listarTarefas( $usuario)
+    public static function listarTarefas($where = '1=1')
     {
-        $where = 'executor_id = :p_executor_id';
+        $where = 'executor_id = :p_executor_id and status != 3 and '.$where;
         $params = array(
-            'p_executor_id' => $usuario
+            'p_executor_id' => $_SESSION['usuario']['id']
+        );
+        return Tarefa::find( $where, $params);
+    }
+
+    public static function listarTarefasConcluidas( $where)
+    {
+        $where = 'executor_id = :p_executor_id and status = 3 and '.$where;
+        $params = array(
+            'p_executor_id' => $_SESSION['usuario']['id']
         );
         return Tarefa::find( $where, $params);
     }
@@ -69,8 +87,20 @@ class TarefaController
         );
         $tarefa = Tarefa::find( $where, $params);
         $tarefa = $tarefa[0];
-        $tarefa->setStatusId( $usuario);
+        $tarefa->setStatus( $status);
         if($tarefa->save()){
+            if($status==3){
+                $pontuacao = 10*$tarefa->getImportancia();
+                $where = 'id = :p_id';
+                $params = array(
+                    'p_id' => $_SESSION['usuario']['id']
+                );
+                $usuario = Usuario::find( $where, $params);
+                $usuario = $usuario[0];
+                $usuario->setPontuacao($usuario->getPontuacao()+$pontuacao);
+                $usuario->save();
+                return $pontuacao;
+            }
             return true;
         }else{
             return false;

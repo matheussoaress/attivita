@@ -48,7 +48,7 @@ class UsuarioController
         }
     }
 
-    public function sairUsuario() {
+    public static function sairUsuario() {
         if(isset($_SESSION['usuario']) && ($_SESSION['usuario'] instanceof Usuario)){
             $_SESSION['usuario'] = "";
             return true;
@@ -57,7 +57,7 @@ class UsuarioController
         }
     }
     
-    public function listarUsuarios(){
+    public static function listarUsuarios(){
         $users = Usuario::find();
         foreach ($users as $user) {
             $info[] = array(
@@ -65,6 +65,6 @@ class UsuarioController
                 'nome' => $user->getNome(),
             );    
         }
-        return json_encode($info);
+        return $info;
     }
 }

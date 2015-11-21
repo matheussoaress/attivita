@@ -7,15 +7,16 @@ use sys\model\Object;
 class Tarefa extends Object
 {
     private $id;
-    private $criadorId;
-    private $executorId;
+    private $criador_id;
+    private $executor_id;
     private $nome;
     private $importancia;
-    private $dataCriacao;
-    private $dataInicio;
-    private $dataLimite;
+    private $data_criacao;
+    private $data_inicio;
+    private $duracao;
     private $descricao;
     private $concluido;
+    private $status;
     
     public function setStatus( $status)
     {
@@ -37,24 +38,24 @@ class Tarefa extends Object
         return $this->id;
     }
     
-    public function setCriadorId( $criadorId)
+    public function setCriadorId( $criador_id)
     { 
-        $this->criadorId = $criadorId;
+        $this->criador_id = $criador_id;
     }
     
     public function getCriadorId()
     { 
-        return $this->criadorId;
+        return $this->criador_id;
     }
     
-    public function setExecutorId( $executorId)
+    public function setExecutorId( $executor_id)
     { 
-        $this->executorId = $executorId;
+        $this->executor_id = $executor_id;
     }
     
     public function getExecutorId()
     { 
-        return $this->executorId;
+        return $this->executor_id;
     }
     
     public function setNome( $nome)
@@ -77,34 +78,34 @@ class Tarefa extends Object
         return $this->importancia;
     }
     
-    public function setDataCriacao( $dataCriacao)
+    public function setDataCriacao( $data_criacao)
     { 
-        $this->dataCriacao = $dataCriacao;
+        $this->data_criacao = $data_criacao;
     }
     
     public function getDataCriacao()
     { 
-        return $this->dataCriacao;
+        return $this->data_criacao;
     }
     
-    public function setDataInicio( $dataInicio)
+    public function setDataInicio( $data_inicio)
     { 
-        $this->dataInicio = $dataInicio;
+        $this->data_inicio = $data_inicio;
     }
     
     public function getDataInicio()
     { 
-        return $this->dataInicio;
+        return $this->data_inicio;
     }
     
-    public function setDataLimite( $dataLimite)
+    public function setDuracao( $duracao)
     { 
-        $this->dataLimite = $dataLimite;
+        $this->duracao = $duracao;
     }
     
-    public function getDataLimite()
+    public function getDuracao()
     { 
-        return $this->dataLimite;
+        return $this->duracao;
     }
     
     public function setDescricao( $descricao)
@@ -132,7 +133,7 @@ class Tarefa extends Object
         parent::__construct();
     }
 
-    public function find($where, $params = array(), $class = true)
+    public static function find($where = '1=1', $params = array(), $class = true)
     {
         $find = new self();
         $find->beginTransaction();
@@ -164,27 +165,27 @@ class Tarefa extends Object
                 'p_nome' => $this->nome,
                 'p_importancia' => $this->importancia, 
                 'p_data_inicio' => $this->data_inicio,
-                'p_data_limite' => $this->data_limite,
+                'p_duracao' => $this->duracao,
                 'p_descricao' => $this->descricao,
                 'p_concluido' => $this->concluido,
             );
-            $update = $this->prepare( 'UPDATE tarefas SET executor_id = :p_executor_id, status = :p_status, nome = :p_nome, importancia = :p_importancia, data_inicio = :p_data_inicio, data_limite = :p_data_limite, descricao = :p_descricao, concluido = :p_concluido WHERE id = :p_id');
+            $update = $this->prepare( 'UPDATE tarefas SET executor_id = :p_executor_id, status = :p_status, nome = :p_nome, importancia = :p_importancia, data_inicio = :p_data_inicio, duracao = :p_duracao, descricao = :p_descricao, concluido = :p_concluido WHERE id = :p_id');
             $result = $update->execute($params);
             return $result?true:false;
         }else{
             $params = array(
                 'p_criador_id' => $this->criador_id,
                 'p_executor_id' => $this->executor_id,
-                'p_status' => $this->status,
+                'p_status' => 1,
                 'p_nome' => $this->nome,
                 'p_importancia' => $this->importancia, 
                 'p_data_criacao' => $this->data_criacao,
                 'p_data_inicio' => $this->data_inicio,
-                'p_data_limite' => $this->data_limite,
+                'p_duracao' => $this->duracao,
                 'p_descricao' => $this->descricao,
-                'p_concluido' => $this->concluido,
+                'p_concluido' => 0,
             );
-            $new = $this->prepare( 'INSERT INTO tarefa(criador_id, executor_id, status, nome, importancia, data_criacao, data_inicio, data_limite, descricao, concluido) VALUES (:p_criador_id, :p_executor_id, :p_status, :p_nome, :p_importancia, :p_data_criacao, :p_data_inicio, :p_data_limite, :p_descricao, :p_concluido)');
+            $new = $this->prepare( 'INSERT INTO tarefas (criador_id, executor_id, status, nome, importancia, data_criacao, data_inicio, duracao, descricao, concluido) VALUES (:p_criador_id, :p_executor_id, :p_status, :p_nome, :p_importancia, :p_data_criacao, :p_data_inicio, :p_duracao, :p_descricao, :p_concluido)');
             $result = $new->execute( $params);
             return $result?true:false;
         }

@@ -105,9 +105,10 @@
                     'p_nascimento' => $this->nascimento,
                     'p_nome' => $this->nome,
                     'p_senha' => $this->senha,
-                    'p_id' => $this->id
+                    'p_id' => $this->id,
+                    'p_pontuacao' => $this->pontuacao
                 );
-                $update = $this->prepare( 'UPDATE usuarios SET email = :p_email, nascimento = :p_nascimento, nome = :p_nome, senha = :p_senha WHERE id = :p_id');
+                $update = $this->prepare( 'UPDATE usuarios SET pontuacao = :p_pontuacao, email = :p_email, nascimento = :p_nascimento, nome = :p_nome, senha = :p_senha WHERE id = :p_id');
                 $result = $update->execute($params);
                 return $result?true:false;
             }else{

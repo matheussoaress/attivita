@@ -9,13 +9,20 @@ use sys\controller\TarefaController;
 if(isset($_POST['usuario'])){
     
     $tarefa = $_POST['tarefa'];
-    $usuario = $_POST['usuario']
+    $usuario = $_POST['usuario'];
 
-    if(empty($usuario) or is_null($usuario)){
-        $usuarios = UsuarioController::getUsuarios();
-        echo json_encode($usuarios);
-    }else{
-        $result = TarefaController::delegarTarefa( $tarefa, $usuario);
-    }
+	if(TarefaController::delegarTarefa( $tarefa, $usuario)){
+		$cod = 1;
+		$msg = "Alterado com sucesso";
+	}else{
+		$cod = 0;
+		$msg = "Impossível alterar no momento";
+	}
+
+	echo json_encode(array('codigo' => $cod, 'mensagem' => $msg));
+
+}else{
+    $usuarios = UsuarioController::listarUsuarios();
+    echo json_encode($usuarios);
 }
 ?>
