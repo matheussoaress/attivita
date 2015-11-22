@@ -153,7 +153,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="agendar"> Agendar para: </label>
-                                <input type="text" id="agendar" name="agendar" class="date form-control">
+                                <input type="text" id="agendar" name="agendar" class="form-control">
                             </div>
                             <div class="col-md-8">
                                 <label for="prioridade"> Prioridade: </label> <br>

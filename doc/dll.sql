@@ -16,6 +16,20 @@ CREATE SCHEMA IF NOT EXISTS `attivita` DEFAULT CHARACTER SET utf8 ;
 USE `attivita` ;
 
 -- -----------------------------------------------------
+-- Table `attivita`.`status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `attivita`.`status` ;
+
+CREATE TABLE IF NOT EXISTS `attivita`.`status` (
+  `id` INT(10) UNSIGNED NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `descricao` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `attivita`.`usuarios`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `attivita`.`usuarios` ;
@@ -26,26 +40,12 @@ CREATE TABLE IF NOT EXISTS `attivita`.`usuarios` (
   `email` VARCHAR(100) NOT NULL,
   `nascimento` DATETIME NULL DEFAULT NULL,
   `senha` VARCHAR(50) NOT NULL,
-  `pontuacao` INT UNSIGNED NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`))
+  `pontuacao` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8;
-
-CREATE UNIQUE INDEX `email_UNIQUE` ON `attivita`.`usuarios` (`email` ASC);
-
-
--- -----------------------------------------------------
--- Table `attivita`.`status`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `attivita`.`status` ;
-
-CREATE TABLE IF NOT EXISTS `attivita`.`status` (
-  `id` INT(10) UNSIGNED NOT NULL,
-  `nome` VARCHAR(100) NOT NULL,
-  `descricao` TEXT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -62,10 +62,13 @@ CREATE TABLE IF NOT EXISTS `attivita`.`tarefas` (
   `importancia` INT(10) UNSIGNED NOT NULL,
   `data_criacao` DATETIME NOT NULL,
   `data_inicio` DATETIME NOT NULL,
-  `data_limite` DATETIME NULL,
+  `duracao` INT(11) NOT NULL,
   `descricao` VARCHAR(2000) NOT NULL,
-  `concluido` INT(1) UNSIGNED NULL,
+  `concluido` INT(1) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
+  INDEX `criador_tarefas_fk_idx` (`criador_id` ASC),
+  INDEX `executor_tarefas_fk_idx` (`executor_id` ASC),
+  INDEX `fk_tarefas_status1_idx` (`status` ASC),
   CONSTRAINT `criador_tarefas_fk`
     FOREIGN KEY (`criador_id`)
     REFERENCES `attivita`.`usuarios` (`id`)
@@ -82,15 +85,22 @@ CREATE TABLE IF NOT EXISTS `attivita`.`tarefas` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `criador_tarefas_fk_idx` ON `attivita`.`tarefas` (`criador_id` ASC);
-
-CREATE INDEX `executor_tarefas_fk_idx` ON `attivita`.`tarefas` (`executor_id` ASC);
-
-CREATE INDEX `fk_tarefas_status1_idx` ON `attivita`.`tarefas` (`status` ASC);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `attivita`.`status`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `attivita`;
+INSERT INTO `attivita`.`status` (`id`, `nome`, `descricao`) VALUES (1, 'Aberto', NULL);
+INSERT INTO `attivita`.`status` (`id`, `nome`, `descricao`) VALUES (2, 'Cancelado', NULL);
+INSERT INTO `attivita`.`status` (`id`, `nome`, `descricao`) VALUES (3, 'Concluído', NULL);
+
+COMMIT;
+
