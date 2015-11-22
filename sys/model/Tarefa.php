@@ -185,7 +185,9 @@ class Tarefa extends Object
                 'p_descricao' => $this->descricao,
                 'p_concluido' => 0,
             );
+            //echo "<pre>";
             $new = $this->prepare( 'INSERT INTO tarefas (criador_id, executor_id, status, nome, importancia, data_criacao, data_inicio, duracao, descricao, concluido) VALUES (:p_criador_id, :p_executor_id, :p_status, :p_nome, :p_importancia, :p_data_criacao, :p_data_inicio, :p_duracao, :p_descricao, :p_concluido)');
+            // print_r($params);exit();
             $result = $new->execute( $params);
             return $result?true:false;
         }

@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../vendor/jquery/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../vendor/datepicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="../vendor/jquery_mask_plugin/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="../vendor/validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../js/tarefa.js"></script>
 </head>
 <body>
@@ -147,11 +149,11 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="duracao"> Duração: </label>
-                                <input type="text" id="duracao" name="duracao" class="number form-control">
+                                <input type="number" id="duracao" name="duracao" class="number form-control">
                             </div>
                             <div class="col-md-6">
                                 <label for="agendar"> Agendar para: </label>
-                                <input type="text" id="agendar" name="agendar" class="number form-control">
+                                <input type="text" id="agendar" name="agendar" class="date form-control">
                             </div>
                             <div class="col-md-8">
                                 <label for="prioridade"> Prioridade: </label> <br>
@@ -190,7 +192,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="tarefa"> Tarefa: </label>
-                                <textarea id="tarefa" name="tarefa" rows="3" class="form-control"></textarea>
+                                <textarea id="tarefa" name="tarefa" maxlength="1950" rows="3" class="form-control"></textarea>
                             </div>
                         </div>
                     </form>

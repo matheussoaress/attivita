@@ -45,7 +45,7 @@ class TarefaController
         return Tarefa::find( $where, $params);
     }
 
-    public static function listarTarefasConcluidas( $where)
+    public static function listarTarefasConcluidas( $where = '1=1')
     {
         $where = 'executor_id = :p_executor_id and status = 3 and '.$where;
         $params = array(

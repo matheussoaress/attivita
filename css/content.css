@@ -36,3 +36,13 @@ div.modal-header{
     background-color: rgb(46, 113, 105);
     color: #fff;
 }
+label.error{
+    display: none !important;
+}
+.error{
+    border-color: rgb(204, 63, 63);;
+    color: rgb(204, 63, 63);;
+}
+.valid{
+    border-color: rgb(92, 173, 93);
+}

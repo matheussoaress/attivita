@@ -21,6 +21,8 @@ $(document).ready(function () {
         },5000);
     };
 
+    $("#agendar").mask('99/99/9999');
+
     $("#agendar").datepicker({
         altField: "#actualDate",
         'format' : 'dd/mm/yyyy',
@@ -28,30 +30,50 @@ $(document).ready(function () {
         'language': 'pt-BR'
     });
 
+    $.validator.messages.required = '';
+    $("form#cadastra").validate({
+        rules:{
+            titulo:{
+                required:true
+            },
+            duracao:{
+                required:true
+            },
+            prioridade:{
+                required:true
+            },
+            tarefa:{
+                required:true
+            }
+        }
+    });
+
     $("#lista").load("./view/tarefaLista.php");	
     $("#listaConcluida").load("./view/tarefaListaConcluida.php"); 
 
     $("#cadastrar").on('click', function(){
-        var data = $("#cadastra").serializeArray();
-        $.ajax({
-            async: false,
-            url: 'view/fCadastroTarefa.php',
-            method:'post',
-            dataType:'json',
-            data: data,
-            success: function ( retorno){
-                if( retorno.codigo == 1){
-                    retornoSucesso(retorno.mensagem);
-                    $("#modalCadastra").modal('hide');
-                }else{
-                    retornoErro(retorno.mensagem);
-                    $("#modalCadastra").modal('hide');
+        if($("form#cadastra").valid()){
+            var data = $("#cadastra").serializeArray();
+            $.ajax({
+                async: false,
+                url: 'view/fCadastroTarefa.php',
+                method:'post',
+                dataType:'json',
+                data: data,
+                success: function ( retorno){
+                    if( retorno.codigo == 1){
+                        retornoSucesso(retorno.mensagem);
+                        $("#inserir").modal('hide');
+                    }else{
+                        retornoErro(retorno.mensagem);
+                        $("#inserir").modal('hide');
+                    }
+                },
+                error: function ( retorno){
+                    console.log(retorno);
                 }
-            },
-            error: function ( retorno){
-                console.log(retorno);
-            }
-        });
+            });
+        }
     });
 
     $("#modalDelegar").on('show.bs.modal', function(event){
@@ -166,4 +188,5 @@ $(document).ready(function () {
         $("#listaConcluida").load("./view/tarefaListaConcluida.php?"+where);
         $("#modalFiltrarConcluida").modal('hide');
     });
+
 });
