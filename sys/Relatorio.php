@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../vendor/jquery/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../vendor/datepicker/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="../js/tarefa.js"></script>
+    <script type="text/javascript" src="../js/relatorio.js"></script>
 </head>
 <body>
 
@@ -38,8 +38,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Tarefas <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Usuários</a></li>
+                        <li><a href="/attivita/sys/tarefa.php">Tarefas </a></li>
+                        <li class="active"><a href="/attivita/sys/relatorio.php">Relatório<span class="sr-only">(current)</span></a></li>
                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -68,9 +68,7 @@
         </nav>
     </div>
 
-
-<div class="content">
-        <h4>Em aberto</h4>
+    <div class="content">
         <div class="row">
             <div class="col-xs-12" id="conteudo">
                 <div class="box box-info">
@@ -81,32 +79,11 @@
                                 <span>Mensagem</span>
                             </div>
                             <div class="pull-right">
-                                <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#inserir"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                                <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#modalFiltrar"><span class="glyphicon glyphicon-search"></span></button>
+                                <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#modalRelatorio"><span class="glyphicon glyphicon-filter"></span></button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div id='lista' class="panel-body"></div>
-                    </div><!-- ./panel-default -->
-                </div><!-- ./box-info -->
-            </div><!-- ./col-xs-12 -->
-        </div><!-- ./row -->    
-        <h4>Concluídas</h4>
-        <div class="row">
-            <div class="col-xs-12" id="conteudo">
-                <div class="box box-info">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="alert alert-info pull-left hidden">
-                                <i class="fa fa-info"></i>
-                                <span>Mensagem</span>
-                            </div>
-                            <div class="pull-right">
-                                <button class="btn  btn-primary btn-md button-color col" data-id="" data-tipo="" data-toggle="modal" data-target="#modalFiltrarConcluida"><span class="glyphicon glyphicon-search"></span></button>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div id='listaConcluida' class="panel-body"></div>
+                        <div id='relat' class="panel-body"></div>
                     </div><!-- ./panel-default -->
                 </div><!-- ./box-info -->
             </div><!-- ./col-xs-12 -->
@@ -123,6 +100,35 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
+
+<div class="modal fade " id="modalRelatorio" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalRelatorioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modalRelatorioLabel">Gerar Relatório</h4>
+            </div>
+            <div class="modal-body">
+                <form id='relatorio'>
+                    <div id="form-group">
+                        <input type="hidden" value="1" name='filtro' id='filtro'>
+                        <div id="col-md-12">
+                            <label for="status"> Tipo de Relatório:</label>
+                            <select id='tprelatorio' name='tprelatorio' class="form-control">
+                                <option value="1">Anual</option>
+                                <option value="2">Mensal</option>
+                                <option value="3">Semanal</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="gerar" class="btn btn-primary button-color">Gerar Relatório</button>
+            </div>
+        </div>
+    </div>
+</div>

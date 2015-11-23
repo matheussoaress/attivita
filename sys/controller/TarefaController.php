@@ -107,4 +107,27 @@ class TarefaController
         }
     }
 
+    public static function relatorioAnual()
+    {
+        $usuario = $_SESSION['usuario']['id'];
+        $info = Tarefa::relatorioAnual( $usuario);
+        return $info?$info:false;
+    } 
+    public static function relatorioMensal()
+    {
+        $usuario = $_SESSION['usuario']['id'];
+        $info = Tarefa::relatorioMensal( $usuario);
+        return $info?$info:false;
+    } 
+    public static function relatorioSemanal()
+    {
+        $usuario = $_SESSION['usuario']['id'];
+        $info = Tarefa::relatorioSemanal( $usuario);
+        for ($i=0; $i < count($info); $i++) { 
+            $semana = $info[$i]['serie'];
+            $info[$i]['serie'] = "Semana ".substr($semana, 4)." de ".substr($semana, 0, 4);
+        }
+        return $info?$info:false;
+    } 
+
 }

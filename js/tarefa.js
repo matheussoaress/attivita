@@ -62,6 +62,8 @@ $(document).ready(function () {
                 data: data,
                 success: function ( retorno){
                     if( retorno.codigo == 1){
+                        $("#lista").load("./view/tarefaLista.php"); 
+                        $("#listaConcluida").load("./view/tarefaListaConcluida.php"); 
                         retornoSucesso(retorno.mensagem);
                         $("#inserir").modal('hide');
                     }else{
@@ -140,6 +142,7 @@ $(document).ready(function () {
             success: function ( retorno){
                 if( retorno.codigo >= 1 ){
                     $("#lista").load("./view/tarefaLista.php"); 
+                    $("#listaConcluida").load("./view/tarefaListaConcluida.php"); 
                     retornoSucesso(retorno.mensagem);
                     $("#modalStatus").modal('hide');
                 }else{
