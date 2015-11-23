@@ -21,6 +21,7 @@ abstract class Object extends \PDO
         $this->pass = 'matt0072matt'; 
         $dns = $this->db.":host=".$this->host.';dbname='.$this->schema;
         parent::__construct( $dns, $this->user, $this->pass ); 
+        $this->exec("set names utf8");
     }
 
 //    abstract public static function find($where, $params, $class = true);

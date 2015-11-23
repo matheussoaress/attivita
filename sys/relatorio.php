@@ -59,7 +59,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">Meu perfil</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Sair</a></li>
+                                <li><a id="sair" href="#">Sair</a></li>
                             </ul>
                         </li>
                     </ul>

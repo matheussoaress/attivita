@@ -192,4 +192,21 @@ $(document).ready(function () {
         $("#modalFiltrarConcluida").modal('hide');
     });
 
+    $("#sair").on("click", function (){
+        var data = {};
+        $.ajax({
+            async: false,
+            url: 'view/fSair.php',
+            method:'post',
+            dataType:'get',
+            data: data,
+            success: function ( retorno){
+                window.location.assign('/attivita/');
+            },
+            error: function ( retorno){
+                console.log(retorno);
+            }
+        });
+    });
+
 });

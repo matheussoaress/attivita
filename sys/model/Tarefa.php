@@ -195,7 +195,7 @@ class Tarefa extends Object
 
     public static function relatorioAnual( $usuario)
     {
-        $sql = "select count(id) quantidade, avg(duracao) duracao, year(data_inicio) serie, case status when 3 then (sum(10*importancia)) end pontos from tarefas where executor_id = :p_executor_id group by serie";
+        $sql = "select count(id) quantidade, round(avg(duracao)) duracao, year(data_inicio) serie, case status when 3 then (sum(10*importancia)) end pontos from tarefas where executor_id = :p_executor_id group by serie, status";
         $params = array(
             'p_executor_id' => $usuario
         );
@@ -209,7 +209,7 @@ class Tarefa extends Object
     }    
     public static function relatorioMensal( $usuario)
     {
-        $sql = "select count(id) quantidade, avg(duracao) duracao, date_format(data_inicio, '%m/%Y') serie, case status when 3 then (sum(10*importancia)) end pontos from tarefas where executor_id = :p_executor_id group by serie";
+        $sql = "select count(id) quantidade, round(avg(duracao)) duracao, date_format(data_inicio, '%m/%Y') serie, case status when 3 then (sum(10*importancia)) end pontos from tarefas where executor_id = :p_executor_id group by serie, status";
         $params = array(
             'p_executor_id' => $usuario
         );
@@ -223,7 +223,7 @@ class Tarefa extends Object
     }
     public static function relatorioSemanal( $usuario)
     {
-        $sql = "select count(id) quantidade, avg(duracao) duracao, yearweek(data_inicio) serie, case status when 3 then (sum(10*importancia)) end pontos from tarefas where executor_id = :p_executor_id group by serie";
+        $sql = "select count(id) quantidade, round(avg(duracao)) duracao, yearweek(data_inicio) serie, case status when 3 then (sum(10*importancia)) end pontos from tarefas where executor_id = :p_executor_id group by serie, status";
         $params = array(
             'p_executor_id' => $usuario
         );

@@ -49,7 +49,7 @@ class UsuarioController
     }
 
     public static function sairUsuario() {
-        if(isset($_SESSION['usuario']) && ($_SESSION['usuario'] instanceof Usuario)){
+        if(isset($_SESSION['usuario']) && (is_array($_SESSION['usuario']))){
             $_SESSION['usuario'] = "";
             return true;
         }else{
